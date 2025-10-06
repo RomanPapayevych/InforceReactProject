@@ -1,31 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV3xVJb-uIiabmF92rbP71lZ834aQo7X9vAw&s",
-      "name": "iPhone 15",
-      "count": 4,
-      "size": {
-        "width": 200,
-        "height": 200
-      },
-      "weight": "200g",
-      "comments": [
-        {
-          "id": 1,
-          "productId": 1,
-          "description": "Super phone!",
-          "date": "14:00 22.08.2021"
-        },
-        {
-          "id": 2,
-          "productId": 1,
-          "description": "Bad phone:(",
-          "date": "14:00 22.08.2022"
-        }
-      ]
-    },
-    {
       "id": "4770",
       "name": "Iphone 16",
       "imageUrl": "https://my-apple.com.ua/image/catalog/products/iphone/iphone-16-16-plus/ultramarine-1.png",
@@ -47,7 +22,18 @@
         "width": 0,
         "height": 0
       },
-      "comments": []
+      "comments": [
+        {
+          "id": 1759755738526,
+          "description": "wefewf",
+          "date": "06.10.2025, 16:02:18"
+        },
+        {
+          "id": 1759755748134,
+          "description": "ffwefef",
+          "date": "06.10.2025, 16:02:28"
+        }
+      ]
     }
   ]
 }
