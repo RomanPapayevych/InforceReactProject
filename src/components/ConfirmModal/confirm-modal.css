@@ -1,0 +1,13 @@
+.confirm-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.confirm-content p{
+    color: black;
+    font-weight: bold;
+}
+
+.confirm-button{
+    margin: 10px;
+}

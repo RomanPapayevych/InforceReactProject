@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./product-modal.css";
 
 const ProductModal = ({ product = {}, onClose, onSave}) => {
      const [formData, setFormData] = useState({
@@ -22,8 +23,8 @@ const ProductModal = ({ product = {}, onClose, onSave}) => {
     };
 
     return(
-        <div style={{ background: "#0008", padding: "20px" }}>
-            <div style={{ background: "#fff", padding: "20px" }}>
+        <div className="product-modal-container">
+            <div className="product-content">
                 <h2>{product.id ? "Edit Product" : "Add Product"}</h2>
                 <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
                 <input name="imageUrl" placeholder="Image URL" value={formData.imageUrl} onChange={handleChange} />

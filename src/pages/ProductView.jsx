@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import CommentList from "../components/CommentList";
-import CommentModal from "../components/CommentModal";
-import ProductModal from "../components/ProductModal";
+import CommentList from "../components/CommentList/CommentList";
+import CommentModal from "../components/CommentModal/CommentModal";
+import ProductModal from "../components/ProductModal/ProductModal";
+import UniversalModal from "../components/universalModal/UniversalModal";
 
 const ProductView = () => {
     const { id } = useParams();
@@ -80,7 +81,7 @@ const ProductView = () => {
     if (!product) return <p>Loading...</p>;
   
   return(
-    <div style={{ padding: "20px" }}>
+    <div className="product-container">
         <h2>{product.name}</h2>
         <img src={product.imageUrl} alt={product.name} width="200" />
         <p>Weight: {product.weight}</p>
@@ -92,18 +93,29 @@ const ProductView = () => {
         <CommentList comments={comments} onDelete={handleDeleteComment}/>
 
         {showCommentModal && (
-            <CommentModal
+            <UniversalModal
+                title="Add Comment"
                 onClose={() => setShowCommentModal(false)}
-                onSave={handleAddComment}
-            />
-        )}
+            >
+                <CommentModal
+                    onClose={() => setShowCommentModal(false)}
+                    onSave={handleAddComment}
+                />
+            </UniversalModal>
+)}
 
         {showEditModal && (
-            <ProductModal
-                product={product}
-                onClose={() => setShowEditModal(false)}
-                onSave={handleEditProduct}
-            />
+            <UniversalModal 
+                title="Add Comment"
+                onClose={() => setShowCommentModal(false)}
+            >
+                <ProductModal
+                    product={product}
+                    onClose={() => setShowEditModal(false)}
+                    onSave={handleEditProduct}
+                />
+            </UniversalModal>
+            
         )}
     </div>
   )

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import './comment-modal.css'
 
 const CommentModal = ({onClose, onSave}) => {
     const [text, setText] = useState("");
@@ -14,9 +15,9 @@ const CommentModal = ({onClose, onSave}) => {
     }
 
     return(
-        <div style={{ background: "#0008", padding: "20px" }}>
-            <div style={{ background: "#fff", padding: "20px" }}>
-                <h3>Add Comment</h3>
+        <div>
+            <div className="product-content">
+                <h2>Add Comment</h2>
                 <textarea 
                     value={text} 
                     onChange={(e) => setText(e.target.value)} 

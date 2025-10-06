@@ -1,0 +1,23 @@
+.product-container{
+    background-color: rgb(159, 159, 159);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.product-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-img{
+    height: auto;
+    width: 200px;
+}
+
+.product-link{
+    color: black;
+    font-size: large;
+    font-weight: 500;
+}

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import ProductItem from '../components/ProductItem'
-import ProductModal from "../components/ProductModal";
-import ConfirmModal from "../components/ConfirmModal";
+import ProductItem from '../components/ProductItem/ProductItem'
+import ProductModal from "../components/ProductModal/ProductModal";
+import ConfirmModal from "../components/ConfirmModal/ConfirmModal";
+import UniversalModal from "../components/universalModal/UniversalModal"
+import "./product-pages.css";
 
 const ProductListView = () => {
     const [products, setProducts] = useState([]);
@@ -43,12 +45,12 @@ const ProductListView = () => {
     });
 
     return(
-        <div style={{ padding: "20px" }}>
+        <div className="product-list-view">
             <h1>Products List View</h1>
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="controls">
                 <button onClick={() => setShowAddModal(true)}>Add Product</button>
-                <select onChange={(e) => setSortType(e.target.value)} value={sortType}>
+                <select className="product-sort" onChange={(e) => setSortType(e.target.value)} value={sortType}>
                     <option value="name">Sort by Name</option>
                     <option value="count">Sort by Count</option>
                 </select>
@@ -62,22 +64,29 @@ const ProductListView = () => {
                 />
             ))}
 
-            {showAddModal && (
-                <ProductModal 
-                    onClose={() => setShowAddModal(false)} 
-                    onSave={handleAddProduct}
-                />
-            )}
+            <div className="product-items"> 
+                {showAddModal && (
+                    <UniversalModal title="Add Product" onClose={() => setShowAddModal(false)}>
+                        <ProductModal 
+                            onClose={() => setShowAddModal(false)} 
+                            onSave={handleAddProduct}
+                        />
+                    </UniversalModal>
+                )}
+            </div>
+            
 
             {productToDelete && (
-                <ConfirmModal
-                    message={`Delete ${productToDelete.name}?`}
-                    onConfirm={() => {
-                        handleDelete(productToDelete.id);
-                        setProductToDelete(null);
-                    }}
-                    onCancel={() => setProductToDelete(null)}
-                />
+                <UniversalModal title="Confirm Delete" onClose={() => setProductToDelete(null)}>
+                    <ConfirmModal
+                     message={`Delete ${productToDelete.name}?`}
+                     onConfirm={() => {
+                         handleDelete(productToDelete.id);
+                         setProductToDelete(null);
+                     }}
+                     onCancel={() => setProductToDelete(null)}
+                 />
+                </UniversalModal>
             )}
         </div>
     )

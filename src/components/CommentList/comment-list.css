@@ -1,0 +1,16 @@
+.comment-content{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: rgb(218, 218, 218);
+    width: 100%;
+    color: black; 
+    font-weight: bold;
+}
+
+.btn-delete{
+    background-color: red;
+    border-radius: 20px;
+    width: 100px;
+    margin: 0 auto;
+}
