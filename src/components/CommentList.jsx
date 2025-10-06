@@ -1,4 +1,6 @@
 const CommentList = ({comments}) => {
+    if (!comments || comments.length === 0) return <p>No comments yet.</p>;
+    
     return(
         <div>
             <h3>Comments:</h3>
