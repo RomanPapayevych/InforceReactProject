@@ -50,6 +50,19 @@ const ProductView = () => {
         });
     }
 
+    const handleDeleteComment = (commentId) => {
+        fetch(`http://localhost:5000/comments/${commentId}`, { method: "DELETE" })
+            .then(() => {
+                setComments(prev => prev.filter(c => c.id !== commentId));
+                const updatedProduct = { ...product, comments: product.comments.filter(id => id !== commentId) };
+                fetch(`http://localhost:5000/products/${id}`, {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updatedProduct)
+                }).then(() => setProduct(updatedProduct));
+            });
+    };
+
     if (!product) return <p>Loading...</p>;
   
   return(
@@ -60,7 +73,7 @@ const ProductView = () => {
         <p>Count: {product.count}</p>
 
         <button onClick={() => setShowCommentModal(true)}>Add Comment</button>
-        <CommentList comments={comments} />
+        <CommentList comments={comments} onDelete={handleDeleteComment}/>
 
         {showCommentModal && (
             <CommentModal
