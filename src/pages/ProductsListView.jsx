@@ -16,13 +16,15 @@ const ProductListView = () => {
     }, []);
 
     const handleAddProduct = (newProduct) => {
+        const productToSave = { ...newProduct, comments: [] };
+
         fetch("http://localhost:5000/products", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newProduct),
+            body: JSON.stringify(productToSave),
         })
         .then((res) => res.json())
-        .then((data) => setProducts((prev) => [...prev, data]))
+        .then(savedProduct => setProducts(prev => [...prev, savedProduct]))
     }
 
     const handleDelete = (id) => {

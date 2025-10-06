@@ -1,11 +1,27 @@
 {
   "products": [
     {
-      "id": "4770",
-      "name": "Iphone 16",
-      "imageUrl": "https://my-apple.com.ua/image/catalog/products/iphone/iphone-16-16-plus/ultramarine-1.png",
-      "count": "333",
-      "weight": "159",
+      "id": "1",
+      "imageUrl": "some url here",
+      "name": "Product name",
+      "count": 4,
+      "size": {
+        "width": 200,
+        "height": 200
+      },
+      "weight": "200g",
+      "comments": [
+        "1",
+        "2",
+        "1759760891666"
+      ]
+    },
+    {
+      "id": "cec2",
+      "name": "Iphone 6",
+      "imageUrl": "https://cdsassets.apple.com/live/SZLF0YNV/images/sp/111952_SP726-iphone6s-rosegold-select-2015.png",
+      "count": "66",
+      "weight": "130g",
       "size": {
         "width": 0,
         "height": 0
@@ -13,27 +29,56 @@
       "comments": []
     },
     {
-      "id": "65d3",
+      "id": "a028",
       "name": "Iphone 13 pro",
       "imageUrl": "https://my-apple.com.ua/image/catalog/products/iphone/iphone-13-pro-13-pro-max/alpine-green-1.png",
-      "count": "77",
-      "weight": "165",
+      "count": "567",
+      "weight": "159g",
       "size": {
         "width": 0,
         "height": 0
       },
       "comments": [
-        {
-          "id": 1759755738526,
-          "description": "wefewf",
-          "date": "06.10.2025, 16:02:18"
-        },
-        {
-          "id": 1759755748134,
-          "description": "ffwefef",
-          "date": "06.10.2025, 16:02:28"
-        }
+        "1759760858006"
       ]
+    },
+    {
+      "id": "4bfa",
+      "name": "iphone 14 pro ",
+      "imageUrl": "https://ifranko.ua/wp-content/uploads/2022/09/img_1316.png",
+      "count": "345",
+      "weight": "173g",
+      "size": {
+        "width": 0,
+        "height": 0
+      },
+      "comments": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "productId": "1",
+      "description": "Super phone!",
+      "date": "14:00 22.08.2021"
+    },
+    {
+      "id": "2",
+      "productId": "1",
+      "description": "Bad phone :(",
+      "date": "14:00 22.08.2022"
+    },
+    {
+      "id": "1759760858006",
+      "productId": "a028",
+      "description": "erferf",
+      "date": "06.10.2025, 17:27:38"
+    },
+    {
+      "id": "1759760891666",
+      "productId": "1",
+      "description": "erfref",
+      "date": "06.10.2025, 17:28:11"
     }
   ]
 }

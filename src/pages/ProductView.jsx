@@ -6,29 +6,48 @@ import CommentModal from "../components/CommentModal";
 const ProductView = () => {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
+    const [comments, setComments] = useState([]);
     const [showCommentModal, setShowCommentModal] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
-            .then((res) => res.json())
-            // .then((data) => setProduct(data));
-            .then(data => {
-                console.log(data);
-                const foundProduct = data.find(p => p.id.toString() === id);
-                setProduct(foundProduct);
-            });
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(res => res.json())
+            .then(data => setProduct(data));
+
+         fetch(`http://localhost:5000/comments?productId=${id}`)
+            .then(res => res.json())
+            .then(data => setComments(data));
+
     }, [id]);
 
     const handleAddComment = (comment) => {
-        const updated = {
-            ...product, 
-            comments: [...product.comments, comment]
-        }
-        fetch(`http://localhost:5000/products/${id}`, {
-            method: "PUT",
+         const newComment = {
+            id: Date.now().toString(),
+            productId: id.toString(),   
+            description: comment.description,
+            date: new Date().toLocaleString()
+        };
+
+        fetch("http://localhost:5000/comments", {
+            method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updated),
-        }).then(() => setProduct(updated));
+            body: JSON.stringify(newComment)
+        })
+        .then(res => res.json())
+        .then(savedComment => {
+            setComments(prev => [...prev, savedComment]);
+
+            const updatedProduct = {
+                ...product,
+                comments: [...product.comments, savedComment.id] 
+            };
+
+            fetch(`http://localhost:5000/products/${id}`, {
+                method: "PUT",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(updatedProduct)
+            }).then(() => setProduct(updatedProduct));
+        });
     }
 
     if (!product) return <p>Loading...</p>;
@@ -41,7 +60,7 @@ const ProductView = () => {
         <p>Count: {product.count}</p>
 
         <button onClick={() => setShowCommentModal(true)}>Add Comment</button>
-        <CommentList comments={product.comments} />
+        <CommentList comments={comments} />
 
         {showCommentModal && (
             <CommentModal
