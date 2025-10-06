@@ -1,15 +1,15 @@
 const CommentList = ({comments}) => {
     if (!comments || comments.length === 0) return <p>No comments yet.</p>;
-    
+
     return(
         <div>
             <h3>Comments:</h3>
-            {comments.map((comment) => {
+            {comments.map(comment => (
                 <div key={comment.id} style={{ borderBottom: "1px solid #ccc", marginBottom: "5px" }}>
                     <p>{comment.description}</p>
                     <p>{comment.date}</p>
                 </div>
-            })}
+            ))}
         </div>
     )
 }
