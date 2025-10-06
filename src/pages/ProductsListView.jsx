@@ -35,8 +35,10 @@ const ProductListView = () => {
     }
 
     const sortedProducts = [...products].sort((a, b) => {
-        if (sortType === "name") return a.name.localeCompare(b.name);
-        if (sortType === "count") return b.count - a.count;
+        const nameA = a.name || "";
+        const nameB = b.name || "";
+        if (sortType === "name") return nameA.localeCompare(nameB);
+        if (sortType === "count") return (b.count || 0) - (a.count || 0);
         return 0;
     });
 
